@@ -138,7 +138,66 @@ main ul#product-categories img {
 	border-radius: 10px;
 	box-shadow: 0px 0px 6px 2px #ecc03b;
 }
+/*Form Styles*/
+fieldset {
+	margin-top:20px;
+	margin-bottom:20px;
+}
 
+legend {
+	margin-bottom:15px;
+	font-weight:bold;
+	color:grey;
+	font-size:85%;
+}
+
+label, input, select {
+	font-size:90%;
+}
+
+label {
+	float:left;
+	width:12em;
+	text-align:right;
+}
+
+input, select {
+	width:15em;
+	margin-left: 5px;
+	margin-bottom:5px;
+}
+
+input:required {
+	border:2px solid orange;
+}
+input:valid {
+	border:1px solid black;
+}
+
+#payment_method label{
+	float:right;
+	clear:right;
+	width:100px;
+	text-align:right;
+	display:inline-block;
+}
+
+#payment_method input[type="radio"] {
+	width:auto;
+	margin-left:10px;
+}
+
+#month {
+	width:7em;
+}
+
+#year {
+	width:5em;
+}
+
+#submit_reset input {
+	width:10em;
+}
 /* the styles for the navigation menu */
 #nav_menu {
 	margin-top: 2px;

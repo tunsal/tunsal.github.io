@@ -38,28 +38,31 @@
 			<main>
 				<h1>Order Event Tickets</h1>
 				<!-- The form starts here... -->
+				<!--action represents where user will be directed to after submission-->
 				<form action="place_order.html" method="post" name="order_form" id="order_form">
+				<!--This is the start of the Member's personal info-->
 					<fieldset>
 						<legend>Member Information</legend>
 						<label for="email">E-Mail:</label>
-						<input type="email" name="email" id="email"></input><br>
+						<input type="email" name="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Email addres must include an @ symbol" autofocus></input><br>
 						<label for="f_name">First Name:</label>
-						<input type="text" name="f_name" id="f_name"></input><br>
+						<!--required attribute will not allow the user to submit until all input fields have been filled-->
+						<input type="text" name="f_name" id="f_name" required></input><br>
 						<label for="l_name">Last Name:</label>
-						<input type="text" name="l_name" id="l_name"></input><br>
+						<input type="text" name="l_name" id="l_name" required></input><br>
 						<label for="address">Address:</label>
 						<input type="text" name="address" id="address"></input><br>
 						<label for="city">City:</label>
-						<input type="text" name="city" id="city"></input><br>
+						<input type="text" name="city" id="city" required></input><br>
 						<label for="province">Province:</label>
-						<input type="text" name="province" id="province"></input><br>
+						<input type="text" name="province" id="province" pattern="[A-Za]{2}" title="Example...ON=Ontario" placeholder="2-character code" required></input><br>
 						<label for="p_code">Postal Code:</label>
-						<input type="text" name="p_code" id="p_code"></input><br>
+						<input type="text" name="p_code" id="p_code" pattern="[A-Za-z0-9]{6}" title="Example...A1B2C3" placeholder="6 characters" required></input><br>
 						<label for="p_number">Phone Number:</label>
-						<input type="tel" name="p_number" id="p_number"></input><br>
+						<input type="tel" name="p_number" id="p_number" pattern="\d{3}[\-]\d{3}[\-]\d{4}" placeholder="999-999-999"></input><br>
 					</fieldset>
-					
-					<fieldset>
+				<!--This is where the member will choose the contest they would like to participate in-->
+					<fieldset id="ordering_information">
 						<legend>Ordering Information</legend>
 						<label for="event">Event:</label>
 						<select name="event" size="1" multiple>
@@ -76,20 +79,64 @@
 							<option value="s_tickets">Single Tickets</option>
 						</select>
 						<br>
-						<label for="tickets">Number of Tickets</label>	
-						<input type="number" name="tickets" id="tickets"></input>						
+						<label for="tickets">Number of Tickets:</label>	
+						<input type="number" name="tickets" id="tickets" pattern="[0-9]" placeholder="Number of single tickets"></input>						
 					</fieldset>
-					
-					<fieldset>
+				<!--This is where the member will select their payment method-->
+					<fieldset id="payment_method">
 						<legend>Payment Method</legend>
+						<label for="bill_me">Bill Me</label>
+						<input type="radio" name="payment_method" id="bill_me" value="bill_me"></input>
+						<label for="credit">Credit Card</label>
+						<input type="radio" name="payment_method" id="credit" value="credit"></input>
 					</fieldset>
-					
+				<!--Member's credit card information-->	
 					<fieldset>
+					<!--The legend displays a name that will show up on the website-->
 						<legend>Credit Card Information</legend>
+						<!--A label can tell us what we should expect to put into the input field next to it-->
+						<label for="c_type">Card Type:</label>
+						<!--The select element is used to configure a list of options-->
+						<select name="c_type" size="1" multiple>
+						<!--These are the options in the list-->
+							<option value="visa">Visa</option>
+							<option value="m_card">Master Card</option>
+							<option value="discover">Discover</option>
+						</select>
+						<br>
+						<label for="card_number">Card Number:</label>
+						<!--The pattern attribute tells the browser that only values entered that match this criteria will be accepted-->
+						<input type="text" name="card_number" id="card_number" pattern="^\d{4}-\d{4}-\d{4}-\d{4}$" max="16" placeholder="16 digits" required>
+						<br>
+						<label for="">Expiration Date:</label>
+						<select id="month" name="month" size="1" multiple>
+							<option value="jan">January</option>
+							<option value="feb">February</option>
+							<option value="mar">March</option>
+							<option value="apr">April</option>
+							<option value="may">May</option>
+							<option value="june">June</option>
+							<option value="july">July</option>
+							<option value="agt">August</option>
+							<option value="aept">September</option>
+							<option value="Oct">Octoboer</option>
+							<option value="nov">November</option>
+							<option value="dec">December</option>
+						</select>
+						<select id="year" name="year" size="1" multiple>
+							<option value="21">2021</option>
+							<option value="22">2022</option>
+							<option value="23">2023</option>
+							<option value="24">2024</option>
+							<option value="25">2025</option>
+							<option value="26">2026</option>
+							<option value="27">2027</option>
+						</select>
 					</fieldset>
-					
-					<fieldset>
+				<!--The end of the form where the member will choose either to submit or reset the form-->	
+					<fieldset id="submit_reset">
 						<legend>Submit Your Order</legend>
+						<label>&nbsp;</label>
 						<input type="submit" id="submit" value="Submit">
 						<input type="reset" id="reset" value="Reset Fields">
 					</fieldset>
